@@ -1,0 +1,89 @@
+Month,Force,Neighbourhood,Burglary,Robbery,Vehicle crime,Violent crime,Anti-social behaviour,Other crime
+2011-04,Cleveland Police,Ormesby,4,0,0,4,45,28
+2011-04,Cleveland Police,Rossmere,6,0,3,9,34,19
+2011-04,Cleveland Police,Brookfield,8,0,0,4,30,2
+2011-04,Cleveland Police,Seaton,1,0,2,4,52,15
+2011-04,Cleveland Police,Coulby Newham,5,0,0,3,56,23
+2011-04,Cleveland Police,Newcomen,3,0,1,6,37,19
+2011-04,Cleveland Police,Billingham South,5,0,4,3,48,22
+2011-04,Cleveland Police,Dormanstown,8,0,6,8,82,22
+2011-04,Cleveland Police,Newtown,6,0,6,6,100,30
+2011-04,Cleveland Police,Acklam,18,1,2,7,30,16
+2011-04,Cleveland Police,Burn Valley,4,0,1,11,52,18
+2011-04,Cleveland Police,Beechwood,15,0,7,19,68,35
+2011-04,Cleveland Police,Yarm,1,0,0,6,51,27
+2011-04,Cleveland Police,Longbeck,2,0,5,3,30,10
+2011-04,Cleveland Police,Grangefield,3,0,0,2,21,9
+2011-04,Cleveland Police,Park - Middlesbrough,9,1,5,13,48,30
+2011-04,Cleveland Police,Linthorpe,18,1,8,15,50,28
+2011-04,Cleveland Police,Western Parishes,0,0,1,1,16,4
+2011-04,Cleveland Police,Billingham West,3,0,0,6,22,4
+2011-04,Cleveland Police,Ingleby Barwick West,1,0,0,2,33,10
+2011-04,Cleveland Police,Ladgate,7,0,4,6,39,12
+2011-04,Cleveland Police,Parkfield and Oxbridge,4,1,1,14,93,43
+2011-04,Cleveland Police,Brotton,3,0,0,2,51,19
+2011-04,Cleveland Police,Hutton,3,0,2,2,30,8
+2011-04,Cleveland Police,Grangetown,4,0,3,14,50,45
+2011-04,Cleveland Police,Hemlington,1,0,5,6,40,42
+2011-04,Cleveland Police,South Bank,11,0,4,13,73,47
+2011-04,Cleveland Police,Throston,5,1,3,4,47,29
+2011-04,Cleveland Police,Kader,0,0,1,4,25,11
+2011-04,Cleveland Police,Guisborough,5,0,8,13,121,41
+2011-04,Cleveland Police,Village,0,0,2,0,77,24
+2011-04,Cleveland Police,Middlehaven,9,3,7,81,218,186
+2011-04,Cleveland Police,Elwick,1,0,1,2,22,4
+2011-04,Cleveland Police,University,9,2,4,24,109,35
+2011-04,Cleveland Police,Lockwood,0,0,1,3,7,7
+2011-04,Cleveland Police,Pallister,8,1,3,11,56,32
+2011-04,Cleveland Police,Stranton,13,0,10,43,219,93
+2011-04,Cleveland Police,Teesville,5,0,4,6,50,21
+2011-04,Cleveland Police,Owton,4,0,2,10,80,23
+2011-04,Cleveland Police,Ingleby Barwick East,4,0,0,2,41,4
+2011-04,Cleveland Police,Park End,2,0,0,9,61,24
+2011-04,Cleveland Police,Hartburn,0,0,3,0,9,5
+2011-04,Cleveland Police,Hart,0,0,2,2,35,7
+2011-04,Cleveland Police,Coatham,17,0,3,33,110,60
+2011-04,Cleveland Police,Fairfield,0,0,1,2,28,8
+2011-04,Cleveland Police,Stockton Town Centre,8,1,4,23,208,95
+2011-04,Cleveland Police,Clairville,21,0,8,5,50,25
+2011-04,Cleveland Police,Foggy Furze,4,0,2,6,40,27
+2011-04,Cleveland Police,Stainton and Thornton,0,0,1,2,18,11
+2011-04,Cleveland Police,Beckfield,3,0,1,8,31,23
+2011-04,Cleveland Police,St Germains,14,0,7,7,32,13
+2011-04,Cleveland Police,Saltburn,13,0,0,5,36,17
+2011-04,Cleveland Police,Westworth,1,0,0,0,16,4
+2011-04,Cleveland Police,Norton West,3,0,2,0,14,11
+2011-04,Cleveland Police,Thorntree,4,0,1,6,49,28
+2011-04,Cleveland Police,Rift House,4,0,0,4,41,24
+2011-04,Cleveland Police,Eaglescliffe,2,0,3,3,39,20
+2011-04,Cleveland Police,Marton,5,1,2,2,17,10
+2011-04,Cleveland Police,Norton South,9,0,4,4,46,21
+2011-04,Cleveland Police,Eston,5,0,2,10,63,48
+2011-04,Cleveland Police,Greatham,1,0,1,0,15,1
+2011-04,Cleveland Police,Kirkleatham,2,0,4,10,68,25
+2011-04,Cleveland Police,Ayresome,6,2,3,11,73,19
+2011-04,Cleveland Police,Mandale and Victoria,5,0,11,13,113,54
+2011-04,Cleveland Police,Billingham East,1,0,4,5,73,29
+2011-04,Cleveland Police,Billingham North,3,0,11,2,28,7
+2011-04,Cleveland Police,Marton West,2,0,1,4,12,8
+2011-04,Cleveland Police,Roseworth,2,1,8,2,53,39
+2011-04,Cleveland Police,Brus,5,0,1,3,61,25
+2011-04,Cleveland Police,Grange,7,0,0,12,48,30
+2011-04,Cleveland Police,Fens,2,0,1,4,24,14
+2011-04,Cleveland Police,Dyke House,8,0,2,8,64,35
+2011-04,Cleveland Police,St Hilda,2,1,4,3,43,33
+2011-04,Cleveland Police,Billingham Central,0,1,0,7,43,14
+2011-04,Cleveland Police,Bishopsgarth and Elm Tree,5,0,2,4,43,11
+2011-04,Cleveland Police,North Ormesby and Brambles Farm,15,2,3,11,114,47
+2011-04,Cleveland Police,Park - Hartlepool,1,3,2,2,12,5
+2011-04,Cleveland Police,West Dyke,8,0,5,3,34,13
+2011-04,Cleveland Police,Hardwick,3,0,6,10,85,36
+2011-04,Cleveland Police,Skelton,2,0,1,3,42,8
+2011-04,Cleveland Police,Nunthorpe,1,0,1,0,12,4
+2011-04,Cleveland Police,Loftus,4,0,1,7,74,24
+2011-04,Cleveland Police,Normanby,3,0,2,3,32,19
+2011-04,Cleveland Police,Gresham,13,0,9,27,141,71
+2011-04,Cleveland Police,Northern Parishes,0,0,4,1,11,6
+2011-04,Cleveland Police,Zetland,2,0,0,2,18,9
+2011-04,Cleveland Police,Stainsby Hill,1,0,0,6,60,29
+2011-04,Cleveland Police,Norton North,6,0,3,8,57,20

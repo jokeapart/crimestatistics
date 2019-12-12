@@ -1,0 +1,122 @@
+---
+title: "CRIME STATISTICS LIFS"
+author: "Anthony Onche"
+date: "12/10/2019"
+output:
+  word_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE)
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+```
+
+QUESTION:
+What crime(s) act strongly as indicators to violent crime in the UK ?
+
+Null hypotheses Ho : (There is no relationship between anti-social behavior and violent crime)
+
+INTRODUCTION:
+Dataset used in this experiment can be accessed at https://data.police.uk/data/neighbourhood.zip. Dataset contains daily neighbourhood crime with fields (Force, Neighbourhood, Burglary, Robbery, Vehicle.crime, Violent.crime, Anti.social.behaviour, Other.crime) from December 2010 to June 2013. But only data from January to December 2011 with 53,771 rows was extracted for this analysis.
+
+
+
+According to https://www.met.police.uk/sd/stats-and-data/met/crime-type-definitions/ Violent crime includes a range of offences from minor offences such as harassment and common assault, to serious offences such as murder, actual bodily harm and grievous bodily harm.
+Assault with injury, common assault, harassment, murder (homicide), offensive weapon , other violence, wounding/GBH.
+```{r echo=FALSE}
+
+#Import csv with 8 columns into a list
+files_with_needed_columns<- list.files(path="all_data", pattern="*.csv", full.names=TRUE)
+#Use the function lapply (list apply) to apply the read.csv function to the imported files
+lapply_files_with_needed_columns <- lapply(files_with_needed_columns, read.csv)
+#Bind the data into a single csv file
+bind_files_with_needed_columns<- do.call("rbind", lapply_files_with_needed_columns)
+
+#Import csv with more than 8 columns into a list
+files_with_more_columns<- list.files(path="all_data2", pattern="*.csv", full.names=TRUE)
+#Use the function lapply (list apply) to apply the read.csv function to the imported files
+lapply_files_with_more_columns <- lapply(files_with_more_columns, read.csv)
+#Bind the data into a single csv file
+bind_files_with_more_columns<- do.call("rbind", lapply_files_with_more_columns)
+#retrieve columns we need from bind_files_with_more_columns that match with bind_files_with_needed_columnst
+library(dplyr)
+needed_columns<-select(bind_files_with_more_columns,  Month,Force, Neighbourhood, Burglary, Robbery, Vehicle.crime, Violent.crime, Anti.social.behaviour, Other.crime)
+#Bind the needed_columns with bind_files_with_needed_columns
+fulldata<- rbind(bind_files_with_needed_columns, needed_columns )
+```
+
+```{r}
+#1a.FIND THE CORRELATION OF VARIABLES
+correlation_of_fulldata<-cor(fulldata[c('Burglary', 'Robbery', 'Vehicle.crime', 'Violent.crime', 'Anti.social.behaviour','Other.crime')], method = c("pearson"))
+round(correlation_of_fulldata,2)
+```
+FROM THE CORRELATION RESULT ANTI SOCIAL BEHAVIOUR SHOWED A STRONG UPHILL POSITIVE RELATIONSHIP TO VIOLENT CRIME AT 0.82
+
+According to https://www.police.uk/crime-prevention-advice/anti-social-behaviour/, anti-social behaviour covers a wide range of unacceptable activity that causes harm to an individual, to their community or to their environment. This could be an action by someone else that leaves you feeling alarmed, harassed or distressed. It also includes fear of crime or concern for public safety, public disorder or public nuisance.
+Examples of anti-social behaviour include: Nuisance, rowdy or inconsiderate neighbours, Vandalism, graffiti and fly-posting, Street drinking, Environmental damage including littering, dumping of rubbish and abandonment of cars, Prostitution related activity, Begging and vagrancy, Fireworks misuse, Inconsiderate or inappropriate use of vehicles.
+
+
+```{r}
+#1b. FINDING THE LINEAR REGRESSION MODEL BETWEEN anti_social_behaviour and violent_crime
+#y = ax + b 
+#where "a" intercept, b = coefficients and x = predictor variable
+  violent_crime<- fulldata$Violent.crime
+  anti_social_behaviour<- fulldata$Anti.social.behaviour
+  linear_model<-lm(violent_crime~anti_social_behaviour)
+  print(summary(linear_model))
+#a=1.580 b=0.222
+#To predict violent crime 'Y' for a given anti-social behaviour X.
+  #The model equation can be written as follow
+#violent crime = 1.580 * anti social behaviour  + 0.222 
+```
+INTERPRETATION OF THE LINEAR MODEL
+  1.t-value statistic = 327.53
+  2. Degree of freedom = 53769
+  3. p-value (Significance level of t-value) = 2.2e-16
+  4. Hypothesis: True correlation is not equal to 0
+  5. 95 percent confidence interval (0.8133261 0.8189704)
+  6. Dataset Sample estimates a correlation coefficient of 0.82
+  
+F-Statistic: 1.073e+05 on 1, is sufficient to reject the null hypothesis (H0 : There is no relationship between anti-social behaviour and violent crime).
+
+```{r }
+#A LINEAR GRAPH SHOWING THE RELATIONSHIP
+library(ggpubr)
+ggscatter(fulldata,col='blue', x = "Violent.crime", y = "Anti.social.behaviour", main='relationship between Violent crime and Anti-social behaviour', add = "reg.line", conf.int = TRUE, cor.coef = TRUE, cor.method = "pearson")
+  
+
+#1c.USING MULTIPLE REGRESSION, HOW DOES OTHER CRIMES AFFECT THE MODEL.
+  #y = a + b1x1 + b2x2 +...bnxn #Where "a" is the intercept, b1 and b2 are coefficients and x1,x2 predictors.
+  other_crime<-fulldata$Robbery
+  multiple_model<-lm(violent_crime~anti_social_behaviour+other_crime)
+  print(summary(multiple_model)) 
+
+  #a=1.527 b1=0.178 b2=0.0899
+  #To predict violent crime 'Y' for a given anti-social behaviour x1 and other.crimes x2.
+  #Y = 1.527 + 0.178*x1 + 0.0899*x2 
+  #F-statistic: 6.147e+04 on 2 and 53768 Degree of Freedom,  p-value: < 2.2e-16
+  
+  
+  #USING ALL THE VARIABLES FROM THE DATASET.
+  other_crime<-fulldata$Other.crime
+  burglary<-fulldata$Burglary
+  robery<-fulldata$Robbery
+  vehicle_crime<-fulldata$Vehicle.crime
+  multiple_model2<-lm(violent_crime~anti_social_behaviour+other_crime+burglary+robery+vehicle_crime)
+  print(summary(multiple_model2)) 
+```
+INTERPRETATION OF THE MULTIPLE MODEL
+it can be seen that p-value of the F-statistic is < 2.2e-16, which is highly significant.    
+T-value tells whether the predictor variables is significantly related to the outcome variable if it is significantly different from
+zero. Hence it shows that the degree of relationship are in the following order, anti social behaviour (134.284), robery(81.020), other crimes(60.690), burglary(19.715) and lastly vehicle crime(9.619).
+
+CONCLUSION
+In this experiment on violent crimes in the UK as the response variable, it was deduced that a linear model is more effective for inference using anti social behaviour as a predictor while a multiple regression model shows that using anti social behaviour with either robbery and/or other.crimes as predictor variables also yield a strong positive effect on the response variable.
+
+
+
